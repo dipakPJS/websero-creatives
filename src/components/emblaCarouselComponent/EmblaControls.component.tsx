@@ -27,8 +27,8 @@ const EmblaControls: React.FC = () => {
       <div className="work w-full text-center">
         
           <motion.p
-            initial={fadeInDirections.top.initial}
-            whileInView={fadeInDirections.top.animate}
+            initial={fadeInDirections.bottom.initial}
+            whileInView={fadeInDirections.bottom.animate}
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="font-bold font-audioWide text-[80px] sm:text-[120px] md:text-[140px] lg-1:text-[250px] lg:text-[350px] work-font text-black"
