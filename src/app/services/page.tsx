@@ -11,7 +11,7 @@ import ServiceIntroComponent from "@/components/ServiceIntro.component";
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-[100vh] w-[100vw] bg-black text-white ">
+    <div className="min-h-[100vh] w-full bg-black text-white ">
       <ServiceIntroComponent />
       <ServicesListComponent />
       <ServiceIndustriesComponent />

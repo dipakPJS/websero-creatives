@@ -10,7 +10,6 @@ import {
   TiSocialTwitterCircular,
   TiSocialLinkedinCircular,
 } from "react-icons/ti";
- 
 
 const navVariants = {
   hidden: {
@@ -76,6 +75,7 @@ const FullPageNav: React.FC = () => {
             exit="exit"
             variants={navVariants}
             className="fixed inset-0 z-[600] bg-[#000000be] backdrop-blur-20"
+            style={{ overflow: "hidden" }}
           >
             {/* Logo */}
             <div className="p-5">
