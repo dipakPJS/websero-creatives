@@ -45,10 +45,7 @@ export default function ContactGradientComponent() {
         </div>
       </div>
 
-      {/* lottie background */}
-      <div className="absolute h-full w-full">
-        <BackgroundAnimation />
-      </div>
+     
     </div>
   );
 }
