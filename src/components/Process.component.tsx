@@ -32,7 +32,7 @@ export default function ProcessComponent() {
 
       <br />
       <br />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:grid-cols-2 gap-5 lg:gap-10 p-2 lg:p-10 place-items-center w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:grid-cols-2 gap-5 p-2 lg:p-10 place-items-center w-full">
         {ProcessData.map((item, index) => {
           return (
             <MeteorsComponent
