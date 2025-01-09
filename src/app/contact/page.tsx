@@ -1,19 +1,14 @@
 "use client";
 
-import MainContactFormComponent from "@/components/ContactPageComponent/MainContactForm.component";
-import FooterComponent from "@/components/footerComponent/footer.component";
-import { ShootingStarsComponent } from "@/components/ShootingStarsComponent/ShootingStars.component";
+import MainContactFormComponent from "@/components/ContactForm/MainContactForm.component";
+import FooterComponent from "@/components/Footer.component";
+
 
 export default function ContactPage() {
   return (
-    <>
-      <div className="relative">
-        <div className="absolute inset-0">
-          <ShootingStarsComponent />
-        </div>
-        <MainContactFormComponent />
-        <FooterComponent />
-      </div>
-    </>
+    <div className="h-full w-[100vw] relative overflow-x-hidden bg-black">
+      <MainContactFormComponent />
+      <FooterComponent />
+    </div>
   );
 }

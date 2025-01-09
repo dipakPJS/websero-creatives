@@ -1,14 +1,15 @@
+"use client"
 import React from "react";
 import { EmblaOptionsType } from "embla-carousel";
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
 import { EmblaProvider}  from "../../context/EmblaContext"
 
-
+ 
 import "./embla.styles.css";
-import Link from "next/link";
+ 
 
-import data from "../../data/WorkData.json";
+import data from "@/data/WorkData.json";
 import Image from "next/image";
 
 import { CgArrowsExpandUpRight } from "react-icons/cg";
@@ -38,7 +39,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                   <Image
                     src={item.image}
                     alt={item.title}
-                    layout="responsive"
+                 
                     loading="lazy"
                     width={500}
                     height={300}

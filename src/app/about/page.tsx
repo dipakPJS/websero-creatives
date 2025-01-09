@@ -1,35 +1,27 @@
 "use client";
 
-import AboutIntroComponent from "@/components/AboutPageComponents/AboutIntro.component";
-import AboutMarqueeComponent from "@/components/AboutPageComponents/AboutMarquee.component";
-import InfoTextHorizontalScrollComponent from "@/components/AboutPageComponents/InfoTextHorizontalScroll.component";
-import IntroParaComponent from "@/components/AboutPageComponents/IntroPara.component";
-import TextScrollComponent from "@/components/AboutPageComponents/TextScroll.component";
-import ContactGradientComponent from "@/components/contactGradientComponent/contactGradient.component";
-import FooterComponent from "@/components/footerComponent/footer.component";
-import { ShootingStarsComponent } from "@/components/ShootingStarsComponent/ShootingStars.component";
-import { AnimatedTestimonialsComponent } from "@/components/TestimonalComponent/Testimonal.component";
-import { WorldMapComponent } from "@/components/WorldMapComponent/WorldMap.component";
- 
- 
+import AboutIntroComponent from "@/components/AboutIntro.component";
+import AboutMarqueeComponent from "@/components/AboutMarquee.component";
+import TextScrollComponent from "@/components/TextScroll.component";
+import ContactGradientComponent from "@/components/ContactGradient.component";
+import FooterComponent from "@/components/Footer.component";
+import { AnimatedTestimonialsComponent } from "@/components/AnimatedTestimonials.component";
+import AboutIntroParaComponent from "@/components/AboutIntroPara.component";
+import AboutInfoTextHorizontalScrollComponent from "@/components/AboutInfoHorizontalScroll.component";
+import { WorldMapComponent } from "@/components/WorldMap.component";
 
 export default function AboutPage() {
   return (
-    <div className="h-full w-full">
+    <div className="h-full w-[100vw] relative bg-black">
       <AboutIntroComponent />
-      <div className="relative">
-        <div className="absolute inset-0">
-          <ShootingStarsComponent />
-        </div>
       <TextScrollComponent />
-      <IntroParaComponent />
+      <AboutIntroParaComponent />
       <AboutMarqueeComponent />
-      <InfoTextHorizontalScrollComponent />
-       <WorldMapComponent />
-       <AnimatedTestimonialsComponent bgColor="black"/>
-       <ContactGradientComponent />
-       <FooterComponent />
-      </div>
+      <AboutInfoTextHorizontalScrollComponent />
+      <WorldMapComponent />
+      <AnimatedTestimonialsComponent bgColor="black" />
+      <ContactGradientComponent />
+      <FooterComponent />
     </div>
   );
 }

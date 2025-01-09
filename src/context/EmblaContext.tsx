@@ -1,46 +1,59 @@
-import React, { createContext, useContext, useCallback, useState, useEffect } from "react";
+"use client";
+
+import React, {
+  createContext,
+  useContext,
+  useCallback,
+  useState,
+  useEffect,
+} from "react";
 import { EmblaCarouselType } from "embla-carousel";
 
-type EmblaContextType = {
+interface EmblaContextType {
   prevBtnDisabled: boolean;
   nextBtnDisabled: boolean;
   onPrevButtonClick: () => void;
   onNextButtonClick: () => void;
-};
+}
 
 const EmblaContext = createContext<EmblaContextType | undefined>(undefined);
 
-export const useEmbla = (emblaApi: EmblaCarouselType | undefined): EmblaContextType => {
+const useEmbla = (emblaApi: EmblaCarouselType | undefined): EmblaContextType => {
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
 
+  // Stop autoplay functionality
   const stopAutoplay = useCallback(() => {
     const autoplay = emblaApi?.plugins()?.autoplay;
     if (autoplay) autoplay.stop();
   }, [emblaApi]);
 
+  // Scroll to previous slide
   const onPrevButtonClick = useCallback(() => {
     if (!emblaApi) return;
     emblaApi.scrollPrev();
     stopAutoplay(); // Stop autoplay when previous button is clicked
   }, [emblaApi, stopAutoplay]);
 
+  // Scroll to next slide
   const onNextButtonClick = useCallback(() => {
     if (!emblaApi) return;
     emblaApi.scrollNext();
     stopAutoplay(); // Stop autoplay when next button is clicked
   }, [emblaApi, stopAutoplay]);
 
+  // Update button states
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
     setPrevBtnDisabled(!emblaApi.canScrollPrev());
     setNextBtnDisabled(!emblaApi.canScrollNext());
   }, [emblaApi]);
 
+  // Listen for Embla events
   useEffect(() => {
     if (!emblaApi) return;
-    onSelect();
-    emblaApi.on("reInit", onSelect).on("select", onSelect);
+    onSelect(); // Set initial button states
+    emblaApi.on("reInit", onSelect).on("select", onSelect); // Recalculate button states on re-init or selection
   }, [emblaApi, onSelect]);
 
   return {
@@ -51,10 +64,10 @@ export const useEmbla = (emblaApi: EmblaCarouselType | undefined): EmblaContextT
   };
 };
 
-export const EmblaProvider: React.FC<{ children: React.ReactNode; emblaApi: EmblaCarouselType | undefined }> = ({
-  children,
-  emblaApi,
-}) => {
+export const EmblaProvider: React.FC<{
+  children: React.ReactNode;
+  emblaApi: EmblaCarouselType | undefined;
+}> = ({ children, emblaApi }) => {
   const value = useEmbla(emblaApi);
   return <EmblaContext.Provider value={value}>{children}</EmblaContext.Provider>;
 };

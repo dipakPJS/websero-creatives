@@ -1,28 +1,39 @@
-"use client"
+"use client";
 
-import React, { createContext, useState, ReactNode, useContext } from 'react';
+import React, { createContext, useState, ReactNode, useContext } from "react";
+
+interface Variant {
+  height: number;
+  width: number;
+  transition: {
+    type: string;
+    stiffness: number;
+    damping: number;
+  };
+}
 
 interface CursorContextType {
   cursorVariant: string;
-  setCursorVariant: (newValue: string) => void;
+  setCursorVariant: (variant: string) => void;
   textEnter: () => void;
   textLeave: () => void;
-  variants: Record<string, any>;
+  variants: Record<string, Variant>;
 }
 
 const CursorContext = createContext<CursorContextType | undefined>(undefined);
 
-interface MyProviderProps {
+interface CursorProviderProps {
   children: ReactNode;
 }
 
-export const CursorProvider: React.FC<MyProviderProps> = ({ children }) => {
+export const CursorProvider: React.FC<CursorProviderProps> = ({ children }) => {
   const [cursorVariant, setCursorVariant] = useState<string>("default");
 
-  const variants = {
+  // Cursor variants configuration
+  const variants: Record<string, Variant> = {
     default: {
-      height: 30,
-      width: 30,
+      height: 40,
+      width: 40,
       transition: {
         type: "spring",
         stiffness: 300,
@@ -40,11 +51,14 @@ export const CursorProvider: React.FC<MyProviderProps> = ({ children }) => {
     },
   };
 
+  // Handlers to update the cursor variant
   const textEnter = () => setCursorVariant("text");
   const textLeave = () => setCursorVariant("default");
 
   return (
-    <CursorContext.Provider value={{ cursorVariant, setCursorVariant, textEnter, textLeave, variants }}>
+    <CursorContext.Provider
+      value={{ cursorVariant, setCursorVariant, textEnter, textLeave, variants }}
+    >
       {children}
     </CursorContext.Provider>
   );

@@ -2,11 +2,17 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { fadeIn } from "@/utils/variants";
 
-import { PrevButton, NextButton } from "./emblaCarouselArrowButtons.component";
+import { PrevButton, NextButton } from "./EmblaCarouselArrowButtons.component";
 import { useEmblaContext } from "../../context/EmblaContext";
 import Link from "next/link";
+
+const fadeInDirections = {
+  top: { initial: { opacity: 0, y: -50 }, animate: { opacity: 1, y: 0 } },
+  bottom: { initial: { opacity: 0, y: 50 }, animate: { opacity: 1, y: 0 } },
+  left: { initial: { opacity: 0, x: -50 }, animate: { opacity: 1, x: 0 } },
+  right: { initial: { opacity: 0, x: 50 }, animate: { opacity: 1, x: 0 } },
+};
 
 const EmblaControls: React.FC = () => {
   const {
@@ -21,11 +27,11 @@ const EmblaControls: React.FC = () => {
       <div className="work w-full text-center">
         
           <motion.p
-            variants={fadeIn("up", 0.2)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: false, amount: 0.4 }}
-            className="font-bold font-audioWide text-[120px] sm:text-[150px] md:text-[200px] lg-1:text-[250px] lg:text-[350px] work-font text-black"
+            initial={fadeInDirections.top.initial}
+            whileInView={fadeInDirections.top.animate}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="font-bold font-audioWide text-[80px] sm:text-[120px] md:text-[140px] lg-1:text-[250px] lg:text-[350px] work-font text-black"
           >
             Work
           </motion.p>
@@ -35,10 +41,10 @@ const EmblaControls: React.FC = () => {
       {/* main embla-controls */}
       <motion.div
       
-      variants={fadeIn("left", 0.1)}
-      initial="hidden"
-      whileInView="show"
+      initial={fadeInDirections.right.initial}
+      whileInView={fadeInDirections.right.animate}
       viewport={{ once: false, amount: 0.2 }}
+      transition={{ duration: 0.6, delay: 0.4 }}
       
       className="flex flex-col justify-center items-center w-full h-auto p-3 gap-3 mb-5">
         <Link

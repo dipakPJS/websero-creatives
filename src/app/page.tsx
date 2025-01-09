@@ -1,38 +1,32 @@
-"use client";
-
-import AchievementsComponent from "@/components/achievementsComponent/achievements.component";
-import BrandsComponent from "@/components/brandComponent/brands.component";
-import ContactGradientComponent from "@/components/contactGradientComponent/contactGradient.component";
-import DesignersComponent from "@/components/designerComponent/designers.component";
-import FooterComponent from "@/components/footerComponent/footer.component";
-import HomeComponent from "@/components/homeComponent/home.component";
-import PricingComponent from "@/components/pricingComponent/pricing.component";
-import ProcessComponent from "@/components/processComponent/process.component";
-import ServicesComponent from "@/components/servicesComponent/mainServices.component";
-import { ShootingStarsComponent } from "@/components/ShootingStarsComponent/ShootingStars.component";
-import { AnimatedTestimonialsComponent } from "@/components/TestimonalComponent/Testimonal.component";
-import WorkComponent from "@/components/workComponent/work.component";
- 
+import AchievementsComponent from "@/components/Achievement.component";
+import { AnimatedTestimonialsComponent } from "@/components/AnimatedTestimonials.component";
+import BrandsComponent from "@/components/Brands.component";
+import ContactGradientComponent from "@/components/ContactGradient.component";
+import DesignersComponent from "@/components/Designers.component";
+import FooterComponent from "@/components/Footer.component";
+import HomePageComponent from "@/components/HomePage.component";
+import MainServicesComponent from "@/components/MainService.component";
+import PricingComponent from "@/components/Pricing.component";
+import ProcessComponent from "@/components/Process.component";
+import WorkComponent from "@/components/Work.component";
 
 export default function Home() {
   return (
-    <>
-      <HomeComponent />
+    <div className="min-h-screen overflow-x-hidden">
+  
+      <HomePageComponent />
       <WorkComponent />
-      <ServicesComponent />
+      <MainServicesComponent />
       <ProcessComponent />
       <BrandsComponent />
-      <div className="relative">
-        <div className="absolute inset-0">
-          <ShootingStarsComponent />
-        </div>
+      <div className="relative bg-black">
         <DesignersComponent />
         <AchievementsComponent />
         <PricingComponent />
-        <AnimatedTestimonialsComponent bgColor="black" />
+        <AnimatedTestimonialsComponent bgColor="transparent" />
         <ContactGradientComponent />
         <FooterComponent />
       </div>
-    </>
+    </div>
   );
 }

@@ -1,30 +1,31 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { CursorProvider } from "@/context/CursorContext";
+import { AudioProvider } from "@/context/AudioContext";
+import MouseCursorComponent from "@/components/MouseCursor.component";
+import BackgroundAudioComponent from "@/components/BackgroundAudio.component";
+import LogoComponent from "@/components/Logo.Component";
+
+// react-lenis
 
 import { ReactLenis } from "@/utils/lenis";
+import FullPageNav from "@/components/Navbar.component";
  
-import AudioComponent from "@/components/audioComponent/Audio.component";
-import FullPageNav from "@/components/navbarComponent/navbar.component";
-import { CursorProvider } from "@/context/CursorContext";
-import CursorComponent from "@/components/cursorComponent/Cursor.component";
-import LogoComponent from "@/components/logoComponent/logo.component";
 
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+const geistSans = Geist({
   variable: "--font-geist-sans",
-  weight: "100 900",
+  subsets: ["latin"],
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
+
+const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  weight: "100 900",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Websero Studio",
-  description: "Created by Dipak Pokharel",
+  title: "Websero-creative",
+  description: "A Creative Design And Development Agency",
 };
 
 export default function RootLayout({
@@ -37,14 +38,19 @@ export default function RootLayout({
       <ReactLenis root>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          style={{
+            overflowX: "hidden",
+          }}
         >
           <div className="min-h-screen relative">
-          <CursorProvider>
-            <CursorComponent />
-            <AudioComponent />
-            <LogoComponent />
-          <FullPageNav />
-            {children}
+            <CursorProvider>
+              <AudioProvider>
+                <FullPageNav />
+                <MouseCursorComponent />
+                <BackgroundAudioComponent />      
+                <LogoComponent />
+                {children}
+              </AudioProvider>
             </CursorProvider>
           </div>
         </body>
