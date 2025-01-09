@@ -13,6 +13,7 @@ export function CoverComponent() {
         <Link
         onMouseEnter={textEnter}
         onMouseLeave={textLeave}
+        onClick={textLeave}
         href={"/contact"} className="backdrop-blur-20 rounded-full p-5 lg:p-10 px-[50px] bg-gradient-to-br from-[#632289] via-[#000000ae] to-[#0008a461]">
           <GradientTextComponent span={true} texts="Started!" />
         </Link>

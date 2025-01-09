@@ -22,7 +22,7 @@ export default function NotFound() {
       </div>
       <div className=" h-full w-full flex justify-center items-center text-center ">
 
-      <div className='w-auto min-h-[200px] sm:h-[300px] md:h-[400px] lg:[500px]'>
+      <div className='w-auto min-h-[200px]'>
       <NotFoundAnimation />
         </div> 
       
